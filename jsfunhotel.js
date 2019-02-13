@@ -1,31 +1,64 @@
-let hotelName = "Javascript Hotel";
+var hotel = "JavaScript Hotel";
 
-let roomTypes = ["Twin", "Single", "Double", "Queen", "King"];
-let roomPrices = [75, 85, 100, 150, 200];
+var roomTypes = ["Twin", "Single", "Double", "Queen", "King"];
 
-let availableRoomNumbers = [[101, 102, 103, 104], [105, 106, 107, 108], [201, 202, 203, 204], [301, 302, 303], [304, 305]];
+var roomPrices = [75, 85, 100, 150, 200];
 
-let bookedRooms = [[],[],[],[],[]];
+var availableRoomNumbers = [
+    [101, 102, 103, 104],
+    [105, 106, 107, 108],
+    [201, 202, 203, 204],
+    [301, 302, 303],
+    [304, 305]
+];
+
+var bookedRooms = [
+    [],
+    [],
+    [],
+    [],
+    []
+];
 
 function availableRoomQty() {
-    let totalAvailableRoom = 0;
-   for (let i=0; i<availableRoomNumbers.length; i++) {
-        totalAvailableRoom += availableRoomNumbers[i].length;
-        
-   }
-   return totalAvailableRoom;
+    var totalAvailableRoomQty = 0;
+    for (let i = 0; i < availableRoomNumbers.length; i++) {
+        totalAvailableRoomQty += availableRoomNumbers[i].length;
+    }
+    return totalAvailableRoomQty;
 }
 
-// function callback() {
-//     console.log("Total rooms avaliable: ", availableRoomQty());
-// };
+function totalAvailableRoomsReport() {
+    console.log('The total available rooms are:', availableRoomQty());
+}
 
 function bookTwin() {
-    let result = bookedRooms[0].push(availableRoomNumbers[0].pop());
-    console.log(result);
-};
+    bookedRooms[0].push(availableRoomNumbers[0].pop());
+}
+
+function bookSingle() {
+    bookedRooms[1].push(availableRoomNumbers[1].pop());
+}
+function bookDouble() {
+    bookedRooms[2].push(availableRoomNumbers[2].pop());
+}
+function bookQueen() {
+    bookedRooms[3].push(availableRoomNumbers[3].pop());
+}
+function bookKing() {
+    bookedRooms[4].push(availableRoomNumbers[4].pop());
+}
+
+function salesReport(){
+    var totalSales = 0;
+    for (let i = 0; i < bookedRooms.length; i++) {
+        totalSales += bookedRooms[i].length * roomPrices[i]
+    }
+    return totalSales;
+}
 
 
-
-
-console.log(bookTwin());
+bookTwin();
+bookSingle();
+bookTwin();
+console.log(salesReport());
